@@ -1,5 +1,4 @@
 {
-  "$schema": "./schema/settings.schema.json",
   "version": "1.0.0",
   "project": {
     "name": "AI Training Exercises",

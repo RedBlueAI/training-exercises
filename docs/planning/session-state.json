@@ -2,10 +2,10 @@
   "$schema": "../../.claude/schema/session-state.schema.json",
   "schemaVersion": "1.0.0",
   "session": {
-    "id": null,
-    "startedAt": null,
-    "lastActivity": null,
-    "status": "inactive"
+    "id": "2026-02-23-general",
+    "startedAt": "2026-02-23T00:00:00.000Z",
+    "lastActivity": "2026-02-23T00:00:00.000Z",
+    "status": "active"
   },
   "work": {
     "currentTask": null,
@@ -14,8 +14,8 @@
     "blocked": []
   },
   "git": {
-    "branch": null,
-    "uncommittedAtStart": 0,
+    "branch": "main",
+    "uncommittedAtStart": 2,
     "commitsThisSession": 0
   },
   "blockers": [],

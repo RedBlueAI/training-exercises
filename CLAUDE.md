@@ -2,7 +2,7 @@
 
 ## Project Overview
 Field service management dashboard for training AI-enhanced development workflows.
-This is the hands-on training repository for a 12-session "AI Tool Assistance System" curriculum.
+Hands-on training repository for a 12-session "AI Tool Assistance System" curriculum.
 
 **Tech stack:** Next.js 14, TypeScript, Tailwind CSS, Groq AI (llama-3.1-8b-instant)
 
@@ -48,10 +48,7 @@ This project uses the Claude Workflow System (v2.1.1) with the `nextjs-developme
 - `/RunSecurityAudit` — Security vulnerability scanning
 - `/PRDIntake`, `/PRDValidate`, `/PRDEnrich`, `/PRDFeasibility` — PRD workflow
 - `/Breakdown`, `/CyclePlan`, `/CycleCommit` — Sprint planning
-
-### Variant Commands (Next.js)
-- `/CreateComponent` — Scaffold React components
-- `/CreateAPIRoute` — Scaffold API routes
+- `/CreateComponent`, `/CreateAPIRoute` — Next.js variant commands
 
 ## Development Guidelines
 
@@ -65,10 +62,6 @@ This project uses the Claude Workflow System (v2.1.1) with the `nextjs-developme
 - All API routes return `{ success: boolean, data?: T, error?: string }`
 - Use Zod for request validation
 - Error responses include meaningful messages but NEVER stack traces in production
-
-### Testing
-- Jest for unit tests, React Testing Library for components
-- Run: `npm test`
 
 ## Exercise Conventions
 
