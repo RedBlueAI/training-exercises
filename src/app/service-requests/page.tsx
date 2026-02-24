@@ -37,7 +37,7 @@ export default function ServiceRequestsPage() {
                     {req.title}
                   </Link>
                 </td>
-                <td className="px-4 py-3 text-sm">
+                <td className="px-4 py-3 text-sm text-slate-900">
                   {getCategoryIcon(req.category)} {req.category}
                 </td>
                 <td className="px-4 py-3">
@@ -50,7 +50,7 @@ export default function ServiceRequestsPage() {
                     {req.status}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-sm text-slate-600">{req.location}</td>
+                <td className="px-4 py-3 text-sm text-slate-900">{req.location}</td>
               </tr>
             ))}
           </tbody>

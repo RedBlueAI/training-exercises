@@ -43,7 +43,7 @@ export default async function ServiceRequestDetailPage({ params }: { params: Pro
               <h2 className="text-sm font-medium text-slate-500 mb-1">Description</h2>
               {/* ⚠️ DELIBERATE XSS VULNERABILITY — Session 10 Security Exercise */}
               <div
-                className="text-slate-700"
+                className="text-slate-900"
                 dangerouslySetInnerHTML={{ __html: request.description }}
               />
             </div>
@@ -53,24 +53,24 @@ export default async function ServiceRequestDetailPage({ params }: { params: Pro
             <div className="bg-slate-50 rounded-lg p-4 space-y-3">
               <div>
                 <p className="text-xs text-slate-500">Category</p>
-                <p className="text-sm font-medium">{getCategoryIcon(request.category)} {request.category}</p>
+                <p className="text-sm font-medium text-slate-900">{getCategoryIcon(request.category)} {request.category}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">Location</p>
-                <p className="text-sm font-medium">{request.location}</p>
+                <p className="text-sm font-medium text-slate-900">{request.location}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">Reported By</p>
-                <p className="text-sm font-medium">{request.reportedBy}</p>
+                <p className="text-sm font-medium text-slate-900">{request.reportedBy}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">Created</p>
-                <p className="text-sm font-medium">{formatDate(request.createdAt)}</p>
+                <p className="text-sm font-medium text-slate-900">{formatDate(request.createdAt)}</p>
               </div>
               {assignedTech && (
                 <div>
                   <p className="text-xs text-slate-500">Assigned Technician</p>
-                  <p className="text-sm font-medium">{assignedTech.name}</p>
+                  <p className="text-sm font-medium text-slate-900">{assignedTech.name}</p>
                 </div>
               )}
             </div>

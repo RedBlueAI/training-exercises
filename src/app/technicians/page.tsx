@@ -28,7 +28,7 @@ export default function TechniciansPage() {
             <div className="space-y-2 text-sm">
               <div>
                 <p className="text-xs text-slate-500">Skill Level</p>
-                <p className="font-medium capitalize">{tech.skillLevel}</p>
+                <p className="font-medium capitalize text-slate-900">{tech.skillLevel}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">Specialties</p>
@@ -53,10 +53,10 @@ export default function TechniciansPage() {
               {tech.currentLocation && (
                 <div>
                   <p className="text-xs text-slate-500">Current Location</p>
-                  <p className="text-slate-700">{tech.currentLocation}</p>
+                  <p className="text-slate-900">{tech.currentLocation}</p>
                 </div>
               )}
-              <div className="pt-2 border-t text-xs text-slate-500">
+              <div className="pt-2 border-t text-xs text-slate-600">
                 {tech.email} · {tech.phone}
               </div>
             </div>

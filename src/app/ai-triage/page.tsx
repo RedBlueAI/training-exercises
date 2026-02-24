@@ -64,7 +64,7 @@ export default function AITriagePage() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={6}
-              className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Describe the service request..."
             />
             <button
@@ -106,7 +106,7 @@ export default function AITriagePage() {
               <div className="grid grid-cols-3 gap-3">
                 <div className="bg-slate-50 rounded-lg p-3">
                   <p className="text-xs text-slate-500 mb-1">Category</p>
-                  <p className="font-medium">
+                  <p className="font-medium text-slate-900">
                     {getCategoryIcon(result.category)} {result.category}
                   </p>
                 </div>
@@ -118,18 +118,18 @@ export default function AITriagePage() {
                 </div>
                 <div className="bg-slate-50 rounded-lg p-3">
                   <p className="text-xs text-slate-500 mb-1">Skill Level</p>
-                  <p className="font-medium capitalize">{result.skillLevel}</p>
+                  <p className="font-medium capitalize text-slate-900">{result.skillLevel}</p>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs text-slate-500 mb-1">AI Reasoning</p>
-                <p className="text-sm text-slate-700 bg-slate-50 rounded-lg p-3">{result.reasoning}</p>
+                <p className="text-sm text-slate-900 bg-slate-50 rounded-lg p-3">{result.reasoning}</p>
               </div>
 
               <div>
                 <p className="text-xs text-slate-500 mb-1">Suggested Customer Response</p>
-                <div className="text-sm text-slate-700 bg-blue-50 border border-blue-100 rounded-lg p-3 italic">
+                <div className="text-sm text-slate-900 bg-blue-50 border border-blue-100 rounded-lg p-3 italic">
                   {result.suggestedResponse}
                 </div>
               </div>

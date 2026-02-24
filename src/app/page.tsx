@@ -159,11 +159,11 @@ export default function Home() {
             <h3 className="text-base font-medium text-slate-700 mb-2">
               {session.title}
             </h3>
-            <p className="text-sm text-slate-500 mb-4">{session.description}</p>
+            <p className="text-sm text-slate-600 mb-4">{session.description}</p>
             <ul className="space-y-1 mb-4">
               {session.exercises.map((exercise, i) => (
-                <li key={i} className="text-sm text-slate-600 flex items-start gap-2">
-                  <span className="text-slate-400 mt-0.5">•</span>
+                <li key={i} className="text-sm text-slate-700 flex items-start gap-2">
+                  <span className="text-slate-500 mt-0.5">•</span>
                   {exercise}
                 </li>
               ))}
