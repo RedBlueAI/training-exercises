@@ -1,4 +1,4 @@
-# 🏗️ Encompass Field Service — AI Training Exercises
+# 🏗️ Field Service — AI Training Exercises
 
 Hands-on training repository for the **AI Tool Assistance System** curriculum.
 
@@ -38,7 +38,7 @@ Exercise instructions are in the `exercises/` directory, organized by session.
 
 ## Application
 
-This is a **Field Service Management Dashboard** — a realistic application that Encompass engineers use for hands-on exercises. It includes:
+This is a **Field Service Management Dashboard** — a realistic application that engineers use for hands-on exercises. It includes:
 
 - **Dashboard** — Overview of service requests and technician status
 - **Service Requests** — List, view, and manage service requests

@@ -1,4 +1,4 @@
-# Encompass Training Exercises
+# AI Training Exercises
 
 ## Project Overview
 Field service management dashboard for training AI-enhanced development workflows.

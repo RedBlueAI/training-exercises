@@ -1,7 +1,7 @@
 # PRD: Real-Time Technician Tracking
 
 ## Overview
-Add real-time GPS tracking for field technicians to the Encompass Field Service Dashboard, enabling dispatchers to see live locations and make smarter assignment decisions.
+Add real-time GPS tracking for field technicians to the Field Service Dashboard, enabling dispatchers to see live locations and make smarter assignment decisions.
 
 ## Problem Statement
 Dispatchers currently assign technicians based on static "current location" data that's manually updated. This leads to suboptimal routing, longer response times, and frustrated customers. We need real-time visibility.

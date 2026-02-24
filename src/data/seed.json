@@ -107,7 +107,7 @@
     {
       "id": "TECH-001",
       "name": "James Rodriguez",
-      "email": "j.rodriguez@encompassonsite.com",
+      "email": "j.rodriguez@acmeservices.example.com",
       "phone": "555-0101",
       "specialties": [
         "electrical",
@@ -126,7 +126,7 @@
     {
       "id": "TECH-002",
       "name": "Maria Santos",
-      "email": "m.santos@encompassonsite.com",
+      "email": "m.santos@acmeservices.example.com",
       "phone": "555-0102",
       "specialties": [
         "plumbing",
@@ -144,7 +144,7 @@
     {
       "id": "TECH-003",
       "name": "Robert Kim",
-      "email": "r.kim@encompassonsite.com",
+      "email": "r.kim@acmeservices.example.com",
       "phone": "555-0103",
       "specialties": [
         "hvac",
@@ -163,7 +163,7 @@
     {
       "id": "TECH-004",
       "name": "Ashley Johnson",
-      "email": "a.johnson@encompassonsite.com",
+      "email": "a.johnson@acmeservices.example.com",
       "phone": "555-0104",
       "specialties": [
         "electrical",
@@ -180,7 +180,7 @@
     {
       "id": "TECH-005",
       "name": "Carlos Mendez",
-      "email": "c.mendez@encompassonsite.com",
+      "email": "c.mendez@acmeservices.example.com",
       "phone": "555-0105",
       "specialties": [
         "elevators",

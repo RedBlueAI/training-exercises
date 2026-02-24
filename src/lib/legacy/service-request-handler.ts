@@ -278,7 +278,7 @@ function getTotalCount(timeRange: any, callback: any) {
 
 // ⚠️ DELIBERATE VULNERABILITY — Session 10 Security Exercise
 // Hardcoded API key in source code
-export const INTERNAL_API_KEY = 'sk-encompass-prod-2026-xK9mP2nQ4rT6';
+export const INTERNAL_API_KEY = 'sk-acme-prod-2026-xK9mP2nQ4rT6';
 
 // Admin endpoint with no authentication check
 export function getAdminDashboardData() {
@@ -290,6 +290,6 @@ export function getAdminDashboardData() {
     monthlyBudget: 45000,
     // ⚠️ Exposes sensitive data without auth
     apiKeys: [INTERNAL_API_KEY],
-    databaseUrl: 'postgresql://admin:supersecret@db.internal:5432/encompass',
+    databaseUrl: 'postgresql://admin:supersecret@db.internal:5432/acme',
   };
 }
