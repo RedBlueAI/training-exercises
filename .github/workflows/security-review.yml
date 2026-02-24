@@ -1,0 +1,12 @@
+name: Security Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Security Audit
+        run: echo "Configure Claude Code security review integration here"

@@ -1,0 +1,200 @@
+{
+  "serviceRequests": [
+    {
+      "id": "SR-001",
+      "title": "Water leak in basement mechanical room",
+      "description": "Water leak detected in basement mechanical room near electrical panel. Water is pooling on the floor and appears to be coming from an overhead pipe joint. Spreading toward the main electrical distribution panel. Immediate attention needed to prevent electrical hazard.",
+      "category": "plumbing",
+      "priority": "emergency",
+      "status": "open",
+      "location": "Building A - Basement Level",
+      "reportedBy": "Mike Torres",
+      "createdAt": "2026-02-23T08:15:00Z",
+      "updatedAt": "2026-02-23T08:15:00Z"
+    },
+    {
+      "id": "SR-002",
+      "title": "HVAC unit grinding noise",
+      "description": "HVAC unit on the roof of Building C is making a grinding noise. The noise is intermittent and only occurs during peak cooling hours (1PM-5PM). Tenants on the 4th floor are complaining about reduced airflow and unusual vibrations. Unit is a Carrier 50XC model, installed 2019.",
+      "category": "hvac",
+      "priority": "urgent",
+      "status": "assigned",
+      "location": "Building C - Roof / 4th Floor",
+      "reportedBy": "Sarah Chen",
+      "assignedTo": "TECH-003",
+      "createdAt": "2026-02-22T14:30:00Z",
+      "updatedAt": "2026-02-23T09:00:00Z",
+      "notes": "Scheduled for inspection Tuesday morning"
+    },
+    {
+      "id": "SR-003",
+      "title": "Emergency exit lights not working - 3rd floor",
+      "description": "Multiple emergency exit lights on the 3rd floor of Building B are not illuminating. Both the hallway exit signs near stairwell A and stairwell B are affected. This is a fire code compliance issue that needs prompt resolution.",
+      "category": "electrical",
+      "priority": "urgent",
+      "status": "in-progress",
+      "location": "Building B - 3rd Floor",
+      "reportedBy": "David Park",
+      "assignedTo": "TECH-001",
+      "createdAt": "2026-02-21T16:45:00Z",
+      "updatedAt": "2026-02-23T10:30:00Z",
+      "notes": "Technician has replaced 2 of 4 units, waiting on parts for remaining"
+    },
+    {
+      "id": "SR-004",
+      "title": "Additional power outlets needed in conference room",
+      "description": "Conference Room B in Building A needs 4 additional duplex outlets installed along the south wall. The room is being converted to a hybrid meeting space and needs power for monitors, cameras, and laptop docking stations. Low priority — can be scheduled during off-hours.",
+      "category": "electrical",
+      "priority": "low",
+      "status": "open",
+      "location": "Building A - Conference Room B",
+      "reportedBy": "Jennifer Walsh",
+      "createdAt": "2026-02-20T09:00:00Z",
+      "updatedAt": "2026-02-20T09:00:00Z"
+    },
+    {
+      "id": "SR-005",
+      "title": "Elevator stuck between floors",
+      "description": "Elevator #2 in Building A is stuck between floors 5 and 6. No passengers are currently inside (confirmed by security cameras). The elevator was last serviced 3 months ago. Display panel shows error code E-47. Building management has cordoned off the area.",
+      "category": "structural",
+      "priority": "emergency",
+      "status": "in-progress",
+      "location": "Building A - Elevator #2",
+      "reportedBy": "Security Team",
+      "assignedTo": "TECH-003",
+      "createdAt": "2026-02-23T07:30:00Z",
+      "updatedAt": "2026-02-23T07:45:00Z"
+    },
+    {
+      "id": "SR-006",
+      "title": "Parking lot lights flickering",
+      "description": "Multiple light poles in the east parking lot are flickering intermittently. Affects approximately 6 poles in Section D. Employees have reported feeling unsafe walking to their cars after dark. Could be a ballast issue or wiring problem in the underground conduit.",
+      "category": "electrical",
+      "priority": "routine",
+      "status": "open",
+      "location": "East Parking Lot - Section D",
+      "reportedBy": "HR Department",
+      "createdAt": "2026-02-19T11:20:00Z",
+      "updatedAt": "2026-02-19T11:20:00Z"
+    },
+    {
+      "id": "SR-007",
+      "title": "Restroom plumbing backup - 2nd floor",
+      "description": "Men's restroom on 2nd floor of Building B has a backed-up toilet and slow-draining sinks. The issue started yesterday afternoon and has gotten progressively worse. Janitorial staff has placed out-of-order signs.",
+      "category": "plumbing",
+      "priority": "urgent",
+      "status": "completed",
+      "location": "Building B - 2nd Floor Restroom",
+      "reportedBy": "Facilities Staff",
+      "createdAt": "2026-02-23T06:00:00Z",
+      "updatedAt": "2026-02-23T06:00:00Z",
+      "assignedTo": "TECH-002"
+    },
+    {
+      "id": "SR-008",
+      "title": "Broken window seal - office 412",
+      "description": "Window seal in office 412 has failed. Condensation forming between the double panes. Draft noticeable near the window. Not urgent but affecting employee comfort and energy efficiency.",
+      "category": "structural",
+      "priority": "low",
+      "status": "open",
+      "location": "Building A - Office 412",
+      "reportedBy": "Lisa Morgan",
+      "createdAt": "2026-02-18T13:00:00Z",
+      "updatedAt": "2026-02-18T13:00:00Z"
+    }
+  ],
+  "technicians": [
+    {
+      "id": "TECH-001",
+      "name": "James Rodriguez",
+      "email": "j.rodriguez@encompassonsite.com",
+      "phone": "555-0101",
+      "specialties": [
+        "electrical",
+        "lighting",
+        "fire-safety"
+      ],
+      "certifications": [
+        "Master Electrician",
+        "OSHA 30",
+        "Fire Alarm Tech"
+      ],
+      "availability": "on-job",
+      "currentLocation": "Building B - 3rd Floor",
+      "skillLevel": "senior"
+    },
+    {
+      "id": "TECH-002",
+      "name": "Maria Santos",
+      "email": "m.santos@encompassonsite.com",
+      "phone": "555-0102",
+      "specialties": [
+        "plumbing",
+        "hvac",
+        "water-systems"
+      ],
+      "certifications": [
+        "Journeyman Plumber",
+        "EPA 608",
+        "Backflow Prevention"
+      ],
+      "availability": "available",
+      "skillLevel": "mid"
+    },
+    {
+      "id": "TECH-003",
+      "name": "Robert Kim",
+      "email": "r.kim@encompassonsite.com",
+      "phone": "555-0103",
+      "specialties": [
+        "hvac",
+        "refrigeration",
+        "controls"
+      ],
+      "certifications": [
+        "HVAC Master",
+        "EPA 608 Universal",
+        "Building Automation"
+      ],
+      "availability": "on-job",
+      "currentLocation": "Building C - Roof",
+      "skillLevel": "specialist"
+    },
+    {
+      "id": "TECH-004",
+      "name": "Ashley Johnson",
+      "email": "a.johnson@encompassonsite.com",
+      "phone": "555-0104",
+      "specialties": [
+        "electrical",
+        "plumbing",
+        "general-maintenance"
+      ],
+      "certifications": [
+        "Journeyman Electrician",
+        "OSHA 10"
+      ],
+      "availability": "available",
+      "skillLevel": "junior"
+    },
+    {
+      "id": "TECH-005",
+      "name": "Carlos Mendez",
+      "email": "c.mendez@encompassonsite.com",
+      "phone": "555-0105",
+      "specialties": [
+        "elevators",
+        "structural",
+        "mechanical"
+      ],
+      "certifications": [
+        "Certified Elevator Technician",
+        "Structural Inspector",
+        "OSHA 30"
+      ],
+      "availability": "on-job",
+      "currentLocation": "Building A - Elevator Shaft",
+      "skillLevel": "specialist"
+    }
+  ]
+}
