@@ -40,6 +40,13 @@ Let the refactoring proceed. Then verify:
 - `consolidate` — Merge the duplicated validation logic
 - `modernize` — Convert everything to async/await with proper TypeScript
 
+### Step 4: Review (3 min)
+```bash
+/ReviewCode files=["src/lib/legacy/service-request-handler.ts"] focus=["architecture","security"]
+```
+- What issues does the review catch post-refactor?
+- Are there any remaining problems?
+
 ## Debrief Questions
 - What did AI identify that you missed?
 - Where did you need to guide or correct the AI?
