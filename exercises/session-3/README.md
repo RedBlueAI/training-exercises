@@ -20,6 +20,9 @@ npm run dev
 Explore the dashboard, service requests, and technician pages.
 
 ### Exercise 2: Install the Claude Workflow System (5 min)
+
+Note: The followiong uses the RedBlueAI github repo but if you have your own internal Organizatinal Github Marketplace setup, you should be using that instead.
+
 ```bash
 # Add the RedBlue workflows marketplace
 claude plugin marketplace add https://github.com/RedBlueAI/claude-workflow-plugin.git
@@ -38,7 +41,7 @@ Select "nextjs-development" variant when prompted.
 - Add any team-specific conventions you'd like to enforce
 
 ### Exercise 4: Configure GitHub MCP (3 min)
-- Set up the GitHub MCP server with a personal repository
+- Set up the GitHub MCP or CLI ingetration
 - Verify connection with `claude claude-workflow:status`
 
 ### Exercise 5: Run Your First Session (2 min)
