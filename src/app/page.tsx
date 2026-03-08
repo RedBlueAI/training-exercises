@@ -168,40 +168,38 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            {session.number === 3 && (
+              <div className="mb-4">
+                <p className="text-xs text-slate-500 mb-2">📚 <code className="bg-slate-100 px-1 rounded">docs/ebooks/session 3/</code></p>
+                <ul className="space-y-1">
+                  <li>
+                    <a
+                      href="https://github.com/RedBlueAI/training-exercises/blob/main/docs/ebooks/session%203/claude_md-best-practices.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      CLAUDE.md best practices
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/RedBlueAI/training-exercises/blob/main/docs/ebooks/session%203/setting-up-mcp.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      Setting up MCP
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
             <p className="text-xs text-slate-400">
               📁 <code className="bg-slate-100 px-1 rounded">exercises/session-{session.number}/</code>
             </p>
           </div>
         ))}
-      </div>
-
-      <div className="mt-12 p-6 bg-slate-100 rounded-lg">
-        <h2 className="text-xl font-semibold text-slate-900 mb-4">📚 Ebooks &amp; Guides</h2>
-        <p className="text-sm text-slate-600 mb-4">
-          Reference docs for Session 3 (environment setup). Links open the documents on GitHub.
-        </p>
-        <ul className="space-y-2 mb-6">
-          <li>
-            <a
-              href="https://github.com/RedBlueAI/training-exercises/blob/main/docs/ebooks/session%203/claude_md-best-practices.md"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline font-medium"
-            >
-              CLAUDE.md best practices
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/RedBlueAI/training-exercises/blob/main/docs/ebooks/session%203/setting-up-mcp.md"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline font-medium"
-            >
-              Setting up MCP
-            </a>
-          </li>
-        </ul>
       </div>
 
       <div className="mt-12 p-6 bg-slate-100 rounded-lg">
