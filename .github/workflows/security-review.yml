@@ -32,15 +32,10 @@ on:
       - '**/Dockerfile*'
       - '**/*.sql'
   workflow_dispatch:
-    inputs:
-      pr_number:
-        description: 'PR number to review'
-        required: true
-        type: number
 
 # Concurrency settings
 concurrency:
-  group: security-${{ github.workflow }}-${{ github.event.pull_request.number || github.event.inputs.pr_number }}
+  group: security-${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
 jobs:
@@ -53,6 +48,7 @@ jobs:
       pull-requests: write
       issues: write
       security-events: write
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -60,20 +56,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get PR details
-        id: pr-details
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "pr_number=${{ github.event.inputs.pr_number }}" >> $GITHUB_OUTPUT
-          else
-            echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
-          fi
-
       - name: Run Claude Security Review
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          pr_number: ${{ steps.pr-details.outputs.pr_number }}
 
           prompt: |
             You are a security engineer performing a security-focused code review.
@@ -182,7 +168,7 @@ jobs:
             github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ steps.pr-details.outputs.pr_number }},
+              issue_number: context.issue.number,
               labels: ['security-reviewed']
             })
 
@@ -194,6 +180,6 @@ jobs:
             github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ steps.pr-details.outputs.pr_number }},
+              issue_number: context.issue.number,
               labels: ['security-issues']
             })
