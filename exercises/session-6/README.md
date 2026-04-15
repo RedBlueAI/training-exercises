@@ -219,7 +219,145 @@ After reviewing findings, fix the issues or use `/FixBug` to let Claude implemen
 
 ## Section 3: Agent-Driven Coding
 
-*Coming soon — will cover multi-agent orchestration for complex feature implementation.*
+### 3.1 Start a Session
+
+```bash
+/StartSession focus="feature"
+```
+
+This loads your project context, connects to Linear and Coda, and prepares for agent-driven work.
+
+---
+
+### 3.2 Review Linear and Pick a Feature
+
+Check what's in your Linear backlog and pick a feature to implement with agents.
+
+```bash
+/LookupFeature "inline AI triage"
+```
+
+Or ask Claude directly:
+
+> "What features are in our Linear backlog for the Field Service project? Pick the highest priority one that's ready to implement."
+
+Claude will query Linear via MCP, show you the available issues, and help you select one. The feature you logged in Section 1.4 ("Inline AI Priority Triage for Service Requests") should be in the backlog — use that as your target.
+
+Once selected, let the agent implement it:
+
+```bash
+/ImplementFeature feature="Inline AI Priority Triage" linearIssue="RBAI-XX" stack=["api", "ui"]
+```
+
+Watch how Claude routes work to different specialist agents automatically based on the `stack` requirements.
+
+---
+
+### 3.3 Understand the Agent System
+
+The `.claude/agents/` directory contains all the specialist agents available in this project. Each agent has a defined role, model, and input/output contract.
+
+**Browse the agents:**
+
+```bash
+ls .claude/agents/
+```
+
+| Agent | Model | Role |
+|-------|-------|------|
+| `dev-manager` | opus | Coordination, planning, quality oversight. **Never writes code.** Delegates to other agents and enforces standards. |
+| `api-route-designer` | sonnet | Designs and implements Next.js API routes with validation, error handling, and patterns |
+| `react-component-writer` | sonnet | Creates React components with TypeScript, accessibility, and modern patterns |
+| `nextjs-specialist` | sonnet | Expert in Next.js App Router, server components, and full-stack React development |
+| `reviewer` | sonnet | Code review for architecture, security, and quality analysis |
+| `test-planner` | sonnet | Test specifications for unit, integration, and edge case coverage |
+| `schema-designer` | sonnet | Database architecture and data modeling |
+| `doc-writer` | sonnet | Technical documentation for specs, guides, and architecture docs |
+| `technical-analyst` | sonnet | Codebase analysis for PRD enrichment and feasibility assessment |
+| `prd-validator` | sonnet | PRD structure validation and completeness scoring |
+| `researcher` | sonnet | Standards and compliance research with citation-backed guidance |
+| `cycle-planner` | sonnet | Cycle planning and capacity management |
+| `status-aggregator` | haiku | Status reporting and async check-in generation (uses the fastest/cheapest model) |
+
+**Key things to notice:**
+- **Model selection matters** — `dev-manager` runs on Opus (best reasoning) because it orchestrates. Coding agents run on Sonnet (fast, capable). `status-aggregator` runs on Haiku (cheapest) for routine reporting.
+- **Agents have contracts** — each defines what inputs it expects and what outputs it produces. Open any agent file to see its input/output contract.
+- **Agents don't overlap** — `dev-manager` never writes code, coders never do planning, reviewers never fix code. This separation prevents agents from stepping on each other.
+
+**Try reading an agent:**
+
+```bash
+cat .claude/agents/api-route-designer.md
+```
+
+---
+
+### 3.4 The Dev-Manager as Orchestrator
+
+The `dev-manager` agent is the coordinator for all other agents. Per the project's `CLAUDE.md`, the dev-manager should be used to coordinate research, documentation, coding, and quality control — it never changes code itself.
+
+**How it works:**
+1. You give the dev-manager a goal (e.g., "implement the inline AI triage feature")
+2. It reads the PRD from Coda, checks Linear for related issues, and reviews the current codebase
+3. It creates a delegation plan — which agents handle which parts:
+   - `api-route-designer` for the `PATCH /api/service-requests/[id]` endpoint
+   - `react-component-writer` for the `AITriageModal` and `PriorityComparison` components
+   - `nextjs-specialist` for data fetching and client component conversion
+   - `reviewer` for post-implementation code review
+   - `test-planner` for test specifications
+4. It reviews results from each agent and validates against acceptance criteria
+5. It ensures Linear issues are updated and documentation is current
+
+**Try it:**
+
+> "Use the dev-manager agent to plan and coordinate implementing the inline AI triage feature from the PRD. Break down the work, delegate to the right agents, and track progress."
+
+**What to observe:**
+- The dev-manager produces a prioritized task list, not code
+- It specifies file boundaries and architecture constraints for each agent
+- It validates agent outputs against PRD acceptance criteria
+- It escalates when requirements conflict or tools fail
+
+---
+
+### 3.5 Using Worktrees with Multiple Agents
+
+Claude Code supports **git worktrees** — isolated copies of the repo where agents can work without interfering with each other or your main working directory.
+
+**Why worktrees matter for multi-agent work:**
+- Two agents can modify the same file on different branches simultaneously
+- A failing experiment in one worktree doesn't dirty your main branch
+- You can review agent work before merging it into your working tree
+
+**How to use worktrees with the Agent tool:**
+
+When launching an agent with `isolation: "worktree"`, Claude Code:
+1. Creates a temporary git worktree (a separate checkout of the repo)
+2. Runs the agent in that isolated directory
+3. If the agent made changes, returns the worktree path and branch name
+4. If no changes were made, automatically cleans up the worktree
+
+**Example — parallel agent work:**
+
+Ask Claude to run multiple agents in parallel on isolated worktrees:
+
+> "Run these in parallel on separate worktrees:
+> 1. Have the api-route-designer create the PATCH /api/service-requests/[id] endpoint
+> 2. Have the react-component-writer create the AITriageModal component
+> 3. Have the test-planner generate test specs for both"
+
+Each agent works in its own worktree, so they can't conflict. When they finish, you review each branch and merge the ones you want.
+
+**Example — safe experimentation:**
+
+> "On a worktree, have the nextjs-specialist try converting the service-requests page from a server component to a client component. Don't touch my working directory."
+
+If the experiment fails, the worktree is discarded. If it succeeds, you can merge the branch.
+
+**Commands that support worktrees:**
+- Any agent can be launched with `isolation: "worktree"` via the Agent tool
+- `/ImplementFeature`, `/FixBug`, and `/RefactorCode` can coordinate worktree-based agents internally
+- Use `git worktree list` to see active worktrees at any time
 
 ---
 
@@ -230,6 +368,8 @@ After reviewing findings, fix the issues or use `/FixBug` to let Claude implemen
 3. What would you add to the quality gates for your team?
 4. How did `/PRDFeasibility` change your approach to the feature?
 5. Was the `/LogNewFeature` workflow faster than manually creating a Linear issue?
+6. How did the dev-manager's delegation plan compare to how you would have broken down the work?
+7. What are the trade-offs of worktree isolation vs. working directly on your branch?
 
 ## Expected Outcomes
 
@@ -240,3 +380,6 @@ After reviewing findings, fix the issues or use `/FixBug` to let Claude implemen
 - Ran a bug-focused session with Coda-driven bug documentation
 - Created a Linear bug ticket directly from Claude Code
 - Experienced code review quality gates on API routes
+- Understood the agent system: roles, models, contracts, and separation of concerns
+- Used the dev-manager to orchestrate multi-agent feature implementation
+- Ran parallel agents on isolated worktrees for safe, conflict-free development
