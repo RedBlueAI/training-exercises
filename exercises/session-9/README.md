@@ -1,97 +1,91 @@
 # Session 9: AI-Assisted Research & PRD Creation
 
+**Duration:** 60 minutes (15 min intro + 45 min hands-on)
+**Audience:** Product Owners, Product Managers
+**Prerequisites:** Sessions 7 and 8 attended (you have seen the consumer side of the PRD pipeline). Claude desktop with research tools and MCP connectors enabled.
+
 ## Objective
-Learn to use AI tools to research a feature space and create a complete PRD from scratch — bridging the gap between a vague feature request and a validated, implementation-ready specification.
 
-## Context
-Sessions 7-8 taught you to VALIDATE and PLAN from an existing PRD. This session teaches you to CREATE the PRD itself — the upstream step that feeds everything else.
+Produce a complete, self-validated PRD from a vague stakeholder request using a numbered prompt library. The PRD you produce here is the same artifact Session 7 validates and Session 8 plans.
 
-## Exercise: From Vague Request to Complete PRD
+This session has no commands. The claude-workflow command set assumes the PRD already exists. Producing the PRD is conversational synthesis work, and the scaffolding for that is well-crafted prompts.
 
-### The Scenario
-Your PM drops this in Slack:
+## Pipeline Context
 
-> "Customers keep asking about getting notifications when their service request status changes. Can we look into this? Maybe email or push notifications or something?"
-
-That's it. That's all you get. Your job: turn this into a complete, validated PRD.
-
-### Step 1: Research Phase (10 min)
-
-Use AI to research the notification feature space:
-
-```bash
-/PRDIntake source="exercises/session-9/feature-request-brief.md"
+```
+Session 9 (today)        →   Session 7              →   Session 8
+PO produces PRD              TL validates PRD           TL/SM/PM plans cycle
+↓                             ↓                          ↓
+knowledge/prd/{slug}.md      PROCEED/DEFER/REJECT       committed Linear cycle
 ```
 
-**If not using Claude Code:** Open the feature request brief and use your AI tool to:
-- Identify what notification systems exist in similar field service apps
-- List technical approaches (email, push, SMS, in-app)
-- Research user expectations for service status notifications
-- Identify regulatory considerations (opt-in, unsubscribe, TCPA)
+Same artifact threads through all three sessions. Quality at handoff depends on the discipline applied in Session 9.
 
-**Questions to answer:**
-1. What notification channels make sense for field service customers?
-2. What events should trigger notifications?
-3. What are the delivery timing expectations?
-4. What personalization is needed?
+## The Prompts
 
-### Step 2: Draft the PRD (10 min)
+Ten numbered prompts, copy-paste-ready, live on the Coda Session 9 Prompts sub-page. Each prompt has a placeholder block you fill in with your context, and produces output that feeds the next prompt in the chain.
 
-Using your research, create a PRD. Start with the template:
+| # | Name | Live in 60-min | Coverage |
+|---|---|---|---|
+| 1 | Frame the Problem Space | **Yes** | Strip solution-first framing |
+| 2 | Layered Research Query | **Yes** | Three-layer source-cited research |
+| 3 | Cite-and-Verify Synthesis | **Yes** | Separate signal from noise |
+| 4 | Stakeholder Interview Synthesis | Homework (if notes exist) | Pattern extraction from interviews |
+| 5 | Draft Problem Statement | Walk-through | Rubric Dimension 1 |
+| 6 | Draft User Definition | Walk-through | Rubric Dimension 2 |
+| 7 | Draft Acceptance Criteria | Walk-through | Rubric Dimension 3 |
+| 8 | Draft Security Considerations | Walk-through | Rubric Dimension 4 |
+| 9 | Self-Validation Against Session 7 Rubric | **Yes** | Catch your own gaps |
+| 10 | Final Pre-Handoff Review & Save | Demo | Frontmatter, filename, handoff message |
 
-```bash
-# Use AI to draft the PRD based on your research
-/PRDEnrich prd="notification-system" depth="deep"
-```
+## 60-Minute Session Flow
 
-**If not using Claude Code:** Use your AI tool to draft a PRD with these sections:
-- Problem Statement
-- User Stories (at least 3)
-- Functional Requirements
-- Non-Functional Requirements (performance, security, scalability)
-- Acceptance Criteria (specific, measurable)
-- Technical Considerations
-- Out of Scope
-- Open Questions
+### Intro (15 min) — Slides 1 to 4 only
 
-Save your PRD to `knowledge/prd/notification-system.md`.
+| Slide | Min | What |
+|---|---|---|
+| 1. Welcome & Agenda | 2 | Module 3 context, pipeline |
+| 2. One Pipeline, Three Sessions | 4 | The artifact thread |
+| 3. PO Problem We're Solving | 4 | Tech Lead quotes, AI-Enhanced workflow |
+| 4. Why Session 9 Has No Commands | 5 | Transition into working block |
 
-### Step 3: Validate Your Own PRD (5 min)
+### Working Block (45 min)
 
-Now validate the PRD you just created:
+| Block | Min | Prompts | Mode | Slide |
+|---|---|---|---|---|
+| A. Frame | 8 | #1 | Hands-on | 5 |
+| B. Research | 15 | #2, #3 | Hands-on | 6 |
+| C. Drafting chain | 7 | #5, #6, #7, #8 | Walk-through using `sample-prd-skeleton.md` answer keys | 7 |
+| D. Self-Validate | 10 | #9 | Hands-on against `knowledge/prd/real-time-technician-tracking.md` | 8 |
+| E. Handoff + homework | 5 | #10 | Demo + assign | 9 |
 
-```bash
-/PRDValidate prd="notification-system" checklist="all"
-```
+See `LAB-GUIDE.md` for the detailed step-by-step walk-through used during the session.
 
-**If not using Claude Code:** Review your PRD against this checklist:
-- [ ] Problem clearly stated with user impact?
-- [ ] User stories cover all personas (customer, technician, dispatcher)?
-- [ ] Acceptance criteria are specific and testable?
-- [ ] Security considerations addressed (PII in notifications)?
-- [ ] Performance requirements stated (delivery latency)?
-- [ ] Edge cases identified (failed delivery, user opt-out)?
-- [ ] Dependencies listed?
-- [ ] Out of scope clearly defined?
+## The Canonical Example: Real-time Technician Tracking
 
-### Step 4: Peer Review (5 min)
+The example threaded through Sessions 7, 8, and 9 is **Real-time Technician Tracking** in the field service domain.
 
-Swap PRDs with a partner. Use AI to review their PRD:
+- **Session 9 input:** `feature-brief-technician-tracking.md` (the vague stakeholder request)
+- **Session 9 output (for Self-Validation Exercise):** `knowledge/prd/real-time-technician-tracking.md` (Session 7's existing PRD, deliberately incomplete)
+- **Session 7 input:** the same `knowledge/prd/real-time-technician-tracking.md`
+- **Session 8 input:** the same PRD after `/PRDEnrich` and `/PRDFeasibility`
 
-```bash
-/PRDValidate prd="partner-notification-prd" checklist="all"
-```
+Alternative brief: `feature-request-brief.md` (Service Status Notifications, the original Session 9 example) for participants who want a second scenario.
 
-**If not using Claude Code:** Manually review against the same checklist. Note what they caught that you missed, and vice versa.
+## Homework
 
-## Debrief Questions
-1. What did AI research surface that you wouldn't have thought of?
-2. Where did you override AI suggestions in the PRD?
-3. How did validating your OWN PRD feel vs. validating someone else's (Sessions 7-8)?
-4. What's the quality difference between an AI-drafted PRD and one written from scratch without AI?
+Pick a real feature you own, run the full Prompts #1 to #10 chain, save the resulting PRD at `knowledge/prd/{feature-slug}.md` in your real codebase or in this training repo, and hand it off to your Tech Lead. Have them run `/PRDValidate`. Compare your Prompt #9 self-validation score to the Tech Lead's actual score. Bring the calibration delta to Session 10.
 
-## Expected Outcomes
-✅ Created a complete PRD from a vague 2-sentence request
-✅ Used AI for research, drafting, AND validation
-✅ Experienced the full PRD lifecycle (request → research → draft → validate → review)
-✅ Understand how AI accelerates the upstream product process
+The homework is the work that does not fit a 60-minute container. The session teaches the disciplines; the homework builds the muscle.
+
+## Files in This Folder
+
+| File | Purpose |
+|---|---|
+| `README.md` | This file. Overview and 60-min flow. |
+| `LAB-GUIDE.md` | Detailed facilitator and participant walk-through. |
+| `feature-brief-technician-tracking.md` | The canonical stakeholder request (matches the slides example). |
+| `feature-request-brief.md` | Alternative stakeholder request (Service Status Notifications, the original Session 9 example). |
+| `sample-prd-skeleton.md` | Pre-built "answer key" outputs of Prompts #5 to #8 against the technician tracking brief, used for the Drafting Chain walk-through. |
+
+The PRD used in Exercise 4 (Self-Validation) lives at the repo root in `knowledge/prd/real-time-technician-tracking.md`. It is the same incomplete PRD Session 7 validates.
